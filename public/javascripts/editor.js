@@ -146,7 +146,12 @@
     // Editor
     var tplEditor = CodeMirror
         .fromTextArea($('textarea[name=tpl]').get(0), {
+            tabSize: 2,
+            tabMode: 'spaces', // or 'shift'
+            indentUnit: 2,
+            matchBrackets: true,
             lineNumbers: true,
+            lineWrapping: true,
             autofocus: true,
             mode: 'javascript',
             theme: 'neat'
@@ -158,7 +163,7 @@
     var dataEditor = CodeMirror
         .fromTextArea($('textarea[name=data]').get(0), {
             lineNumbers: true,
-            autofocus: true,
+            autofocus: false,
             mode: 'javascript',
             theme: 'neat'
         })
