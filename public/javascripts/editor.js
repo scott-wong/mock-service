@@ -58,9 +58,13 @@
     switch (location.hash) {
         case '#help':
             $('a.help').click()
-            break;
+            break
         case '#about':
             $('a.about').click()
+            break
+        case '#account':
+            $('a.account').click()
+            break
     }
 
     // debug
