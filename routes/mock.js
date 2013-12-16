@@ -19,17 +19,27 @@ client.on("error", function(err) {
 
 // client.flushall()
 
+exports.index = function(req, res) {
+    console.log(req);
+    if (req.header('x-requested-with') === 'XMLHttpRequest') {
+        exports.item(req, res)
+        return
+    }
+    res.sendfile('public/editor.html')
+    return
+}
+
 exports.save = function(req, res) {
     var tpl = Function('return ' + (req.query.tpl || req.body.tpl))()
-    var key = Mock.Random.string('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', 5)
+    var id = Mock.Random.string('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', 5)
     var val = {
-        key: key,
+        id: id,
         tpl: tpl,
         date: new Date()
     }
-    client.get(key, function(err, reply) {
+    client.get(id, function(err, reply) {
         if (reply !== null) return exports.save(req, res)
-        client.set(key, JSON.stringify(val), function(err, reply) {
+        client.set(id, JSON.stringify(val), function(err, reply) {
             res.header("Access-Control-Allow-Origin", "*")
             res.header("Access-Control-Allow-Headers", "X-Requested-With")
             res.send(val)
@@ -52,6 +62,9 @@ exports.list = function(req, res) {
                 val.tpl = JSON.stringify(val.tpl)
                 re.push(val)
                 if (index === reply.length - 1) {
+                    re.sort(function(a, b) {
+                        return new Date(a.date) - new Date(b.date)
+                    })
                     res.header("Access-Control-Allow-Origin", "*")
                     res.header("Access-Control-Allow-Headers", "X-Requested-With")
                     res.send(re)
@@ -62,8 +75,26 @@ exports.list = function(req, res) {
     })
 }
 
+exports.item = function(req, res) {
+    client.get(req.params.id, function(err, reply) {
+        if (err) {
+            console.log("Error: " + err)
+            return
+        }
+
+        if (reply === null) {
+            res.redirect('/editor.html')
+            return
+        }
+
+        res.header("Access-Control-Allow-Origin", "*")
+        res.header("Access-Control-Allow-Headers", "X-Requested-With")
+        res.send(reply)
+    })
+}
+
 exports.mock = function(req, res) {
-    client.get(req.query.tpl, function(err, reply) {
+    client.get(req.params.tpl, function(err, reply) {
         if (err) {
             console.log("Error: " + err)
             return
@@ -71,9 +102,9 @@ exports.mock = function(req, res) {
 
         if (reply === null) {
             try {
-                reply = JSON.parse(req.query.tpl)
+                reply = JSON.parse(req.params.tpl)
             } catch (e) {
-                reply = req.query.tpl
+                reply = req.params.tpl
             }
             reply = {
                 tpl: reply
