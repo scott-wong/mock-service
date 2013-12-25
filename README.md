@@ -3,7 +3,7 @@
 
 一个提供在线存储和生成模拟数据的服务。
 
-<http://10.68.196.153:3000/>
+<!-- <http://10.68.196.153:3000/> -->
 
 ## API
 
@@ -28,20 +28,25 @@
 
     获取模拟数据，通过参数 id 指定数据模板，响应内容的格式为 `{ id: ..., tpl: ..., date: ... }`。
 
+6. `/mock/mock/:tpl`
+
+    传入数据模板，返回模拟数据。
+
 ## 启动本地服务
 
 ### 1. 启动 Redis
 
-    cd /Users/nuysoft/kp/ws-nuysoft/redis-2.6.16/src
+<!-- cd /Users/nuysoft/kp/ws-nuysoft/redis-2.6.16/src -->
+
     ./redis-server
 
 ### 2. 启动 Mock Service
     
-    cd ~/kp/ws-nuysoft/MockService/
+<!-- cd ~/kp/ws-nuysoft/MockService/ -->
     node app.js
-    forever -w app.js
+<!-- forever -w app.js -->
 
-### 3. Demo 
+### 3. 访问服务 
     
 访问 <http://localhost:3000/>。
 

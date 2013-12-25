@@ -102,7 +102,9 @@ exports.mock = function(req, res) {
 
         if (reply === null) {
             try {
-                reply = JSON.parse(req.params.tpl)
+                // reply = JSON.parse(req.params.tpl)
+                reply = new Function('return ' + req.params.tpl)
+                reply = reply()
             } catch (e) {
                 reply = req.params.tpl
             }
