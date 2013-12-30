@@ -20,7 +20,6 @@ client.on("error", function(err) {
 // client.flushall()
 
 exports.index = function(req, res) {
-    console.log(req);
     if (req.header('x-requested-with') === 'XMLHttpRequest') {
         exports.item(req, res)
         return
