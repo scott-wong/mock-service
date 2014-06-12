@@ -1,6 +1,6 @@
 {
     "name": "mock-service",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "author": "scott-wong",
     "license": "MIT",
     "repository": {
@@ -11,7 +11,6 @@
         "mock",
         "mock-service"
     ],
-    "private": true,
     "main": "app.js",
     "bin": {
         "mock": "bin/app"
@@ -22,6 +21,5 @@
         "redis": "*",
         "mockjs": "~0.1.2",
         "node-print": "~0.0.4"
-    },
-    "devDependencies": {}
+    }
 }
