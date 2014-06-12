@@ -40,6 +40,8 @@ app.all('/mock/item/:id', mockRoute.item)
 app.all('/mock/list', mockRoute.list)
 app.all('/mock/mock/:tpl', mockRoute.mock)
 
+app.all('/bower_components/*', mockRoute.bower)
+
 // app.get('/', routes.index)
 // app.get('/users', user.list)
 

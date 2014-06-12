@@ -28,6 +28,11 @@ exports.index = function(req, res) {
     return
 }
 
+exports.bower = function(req, res) {
+    res.sendfile('bower_components/' + req.params[0])
+    return
+}
+
 exports.save = function(req, res) {
     var tpl = Function('return ' + (req.query.tpl || req.body.tpl))()
     var id = Mock.Random.string('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', 5)

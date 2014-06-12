@@ -1,9 +1,9 @@
 {
-  "name": "MockService",
-  "version": "0.0.0",
-  "homepage": "https://github.com/nuysoft/MockService",
+  "name": "mock-service",
+  "version": "0.0.1",
+  "homepage": "https://github.com/scott-wong/mock-service",
   "authors": [
-    "nuysoft <nuysoft@gmail.com>"
+    "nuysoft <wyuleo@gmail.com>"
   ],
   "license": "MIT",
   "ignore": [
@@ -14,9 +14,9 @@
     "tests"
   ],
   "devDependencies": {
-    "jquery": "~2.0.3",
+    "jquery": "~2.1.1",
     "bootstrap": "~3.0.3",
     "mockjs": "*",
-    "codemirror": "~3.20.0"
+    "codemirror": "~4.2.0"
   }
 }

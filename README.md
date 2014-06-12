@@ -1,9 +1,8 @@
-# Mock Service
+# mock-service
 ===========
 
 一个提供在线存储和生成模拟数据的服务。
 
-<!-- <http://10.68.196.153:3000/> -->
 
 ## API
 
@@ -36,19 +35,23 @@
 
 ### 1. 启动 Redis
 
-<!-- cd /Users/nuysoft/kp/ws-nuysoft/redis-2.6.16/src -->
-
     ./redis-server
 
-### 2. 启动 Mock Service
-    
-<!-- cd ~/kp/ws-nuysoft/MockService/ -->
-    node app.js
-<!-- forever -w app.js -->
+### 2. 安装mock-service
+* 安装 [nodejs&npm](http://nodejs.org/)
+* 安装 mock-service
+
+   ```bash
+    npm install mock-service -g
+   ```
+
+### 3. 启动 mock-service
+
+   ```bash 
+    mock
+   ```
 
 ### 3. 访问服务 
     
 访问 <http://localhost:3000/>。
-
-
 
