@@ -11,6 +11,8 @@ var Mock = require('mockjs')
 var redis = require('redis')
 var client = redis.createClient()
 
+var __basedir = __dirname.substring(0, __dirname.lastIndexOf('\\') + 1)
+
 console.table = require('node-print').pt
 
 client.on("error", function(err) {
@@ -24,12 +26,12 @@ exports.index = function(req, res) {
         exports.item(req, res)
         return
     }
-    res.sendfile('public/editor.html')
+    res.sendfile(__basedir + 'public/editor.html')
     return
 }
 
 exports.bower = function(req, res) {
-    res.sendfile('bower_components/' + req.params[0])
+    res.sendfile(__basedir + 'bower_components/' + req.params[0])
     return
 }
 

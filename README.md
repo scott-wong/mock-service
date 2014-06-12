@@ -39,19 +39,26 @@
 
 ### 2. 安装mock-service
 * 安装 [nodejs&npm](http://nodejs.org/)
-* 安装 mock-service
+* 安装 mock-service && bower
 
    ```bash
-    npm install mock-service -g
+    npm install mock-service
+    npm install bower
    ```
 
-### 3. 启动 mock-service
+### 3. 安装 bower依赖
+
+   ```bash 
+    bower install
+   ```
+
+### 4. 启动 mock-service
 
    ```bash 
     mock
    ```
 
-### 3. 访问服务 
+### 5. 访问服务 
     
 访问 <http://localhost:3000/>。
 
